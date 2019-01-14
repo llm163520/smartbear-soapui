@@ -42,12 +42,14 @@ public class EndpointExplorerCallback {
     private static final String PAYLOAD_PROPERTY = "payload";
     private static final String HEADERS_PROPERTY = "headers";
 
+    //private final QuickCreateFunctionalTestAction createFunctionalTestAction = new QuickCreateFunctionalTestAction();
+
     public RestURIParser getUrlParser(String url) {
         if (StringUtils.hasContent(url)) {
             try {
                 return new RestURIParserImpl(url);
             } catch (MalformedURLException e) {
-                //
+                //Logging.logError(e);
                 return null;
             }
         }
@@ -59,7 +61,7 @@ public class EndpointExplorerCallback {
         try {
             request = new JSONObject(json);
         } catch (JSONException e) {
-            //
+            //Logging.logError(e);
             return;
         }
 
@@ -75,12 +77,13 @@ public class EndpointExplorerCallback {
             context.put("URLs", Arrays.asList(url));
             context.put("Methods", Arrays.asList(method));
             context.put("InspectionData", Arrays.asList(inspectionData));
-            //
+            //UISupport.showDialog(
+              //      createFunctionalTestAction.getWizardDialog(QuickCreateFunctionalTestAction.REST_URL_OPTION, context));
         });
     }
 
     public String sendRequest(String json) {
-        //
+       // Analytics.trackAction(EXPLORE_API_CLICK_SEND);
 
         String url = "";
         String method = "";
@@ -94,7 +97,7 @@ public class EndpointExplorerCallback {
             headersMap = extractHeaders(request);
             payload = extractPayload(request);
         } catch (JSONException e) {
-            //
+            //Logging.logError(e);
         }
 
         try {
@@ -159,13 +162,29 @@ public class EndpointExplorerCallback {
                     return "Unsupported method";
             }
         } catch (Exception e) {
-            //
+            //Logging.logError(e);
             if (StringUtils.hasContent(e.getMessage())) {
                 return e.getMessage();
             } else {
                 return e.getCause().getMessage();
             }
         }
+    }
+
+    public void exploreAPIAddHeader() {
+       // Analytics.trackAction(EXPLORE_API_ADD_HEADER);
+    }
+
+    public void exploreAPIchangeHTTPMethod(String changeMethodTo) {
+     //   Analytics.trackAction(EXPLORE_API_CHANGE_HTTP_METHOD, "ChangeMethodTo", changeMethodTo);
+    }
+
+    public void exploreAPIClickAuthHeadersTab() {
+      //  Analytics.trackAction(EXPLORE_API_CLICK_AUTH_HEADERS_TAB);
+    }
+
+    public void exploreAPIClickBodyTab() {
+     //   Analytics.trackAction(EXPLORE_API_CLICK_BODY_TAB);
     }
 
     private String extractUrl(JSONObject request) {

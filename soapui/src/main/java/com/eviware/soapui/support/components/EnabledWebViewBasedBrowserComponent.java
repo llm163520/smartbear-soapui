@@ -20,6 +20,7 @@ import com.eviware.soapui.SoapUI;
 import com.eviware.soapui.impl.rest.actions.oauth.BrowserListener;
 import com.eviware.soapui.support.Tools;
 import com.eviware.soapui.support.xml.XmlUtils;
+import com.sun.javafx.webkit.WebConsoleListener;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -349,6 +350,11 @@ class EnabledWebViewBasedBrowserComponent implements WebViewBasedBrowserComponen
             }
             browserPanel.setScene(createJfxScene());
             addKeyboardFocusManager(browserPanel);
+
+            WebConsoleListener.setDefaultListener((WebView webView, String message, int lineNumber, String sourceId) -> {
+                System.out.println(message);
+                System.out.println(lineNumber);
+            });
         }
 
         private Scene createJfxScene() {

@@ -1,5 +1,6 @@
 package com.eviware.soapui.impl.actions.explorer;
 
+import com.eviware.soapui.analytics.ModuleType;
 import com.eviware.soapui.support.UISupport;
 import com.eviware.soapui.support.components.WebViewBasedBrowserComponent;
 import com.eviware.soapui.support.components.WebViewBasedBrowserComponentFactory;
@@ -10,9 +11,8 @@ import javax.swing.JFrame;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
+
+import static com.eviware.soapui.SoapUI.getWorkspace;
 
 public class EndpointExplorerAction extends AbstractAction {
 
@@ -41,10 +41,9 @@ public class EndpointExplorerAction extends AbstractAction {
         f.setVisible(true);
 
         browser.navigate("file://" + "C:\\Users\\Christina.Zelenko\\Desktop\\soapOS\\soapui\\soapui\\src\\main\\resources\\com\\eviware\\soapui\\explorer\\soapui-pro-api-endpoint-explorer-starter-page.html");
-        //browser.navigate("file://" + System.getProperty("soapui.home", ".")
-        //            + "/starter-page.html");
 
         browser.addJavaScriptEventHandler("inspectorCallback", new EndpointExplorerCallback());
+        browser.addJavaScriptEventHandler("moduleStarterPageCallback", new ModuleStarterPageCallback(getWorkspace(), ModuleType.SOAPUI_NG.getId()));
 
 
 //        browser.loadDataWithBaseURL(null,"<script>   </script>","text/html","utf-8",null);

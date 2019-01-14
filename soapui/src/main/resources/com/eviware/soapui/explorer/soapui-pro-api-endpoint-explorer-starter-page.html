@@ -6,7 +6,6 @@
 
     <link rel="stylesheet" type="text/css" href="starter-page-main-api-inspection.css"/>
     <link rel="stylesheet" type="text/css" href="right-panel.css"/>
-    <link rel="stylesheet" type="text/css" href="../css/font-awesome/css/font-awesome.min.css">
 
     <!-- Google Analytics/Universal Analytics-->
     <script>
@@ -30,7 +29,7 @@
     <script type="text/javascript" src="recent-items-new.js"></script>
     <script type="text/javascript" src="jquery-1.11.1min.js"></script>
 
-    <script type="text/javascript" src=".jquery-ui.js"></script>
+    <script type="text/javascript" src="jquery-ui.js"></script>
     <script type="text/javascript" src="common.js"></script>
     <script>
         if (!String.prototype.trim) {
@@ -207,7 +206,10 @@
             form.data.save = $("#{0}".format(form.formSave));
             form.data.formContainer = form.data.save.closest('.re-request-item');
             form.data.save.button();
+            form.data.save.click(function (event)) {
+                event.preventDefault();
 
+            }
 
             form.data.send = $("#{0}".format(form.formAction));
             form.data.formContainer = form.data.send.closest('.re-request-item');
@@ -291,6 +293,7 @@
             var initGET = function () {
                 $("#bodyTab").hide();
                 $("#authHeadTab").hide();
+
             };
 
             $("#methodList").on("selectmenuchange", function (event, ui) {
@@ -442,7 +445,7 @@
             width: calc(100% / 2 - 10px);
             margin-top: 20px;
             height: 240px;
-            <!--border: 1px solid #323232;-->
+            border: 1px solid #323232;
             background-color: white;
             font-size: 12px;
         }
@@ -548,7 +551,13 @@
 
         .re-main .re-request-item .re-info-params .ui-tabs-nav.ui-widget-header li.ui-state-disabled {
             margin-right: 5px;
-            padding-left: 0px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-right: 1px solid #323232;
+            border-left: 1px solid #323232;
+            border-top: 1px solid #323232;
+            border-bottom: 1px solid white;
+            border-top-left-radius: 10px;
         }
 
         .re-main .re-request-item .re-info-params .ui-tabs-nav.ui-widget-header li.ui-tab.ui-tabs-active {
@@ -556,7 +565,7 @@
             border-left: 1px solid #323232;
             border-right: 1px solid #323232;
             border-bottom: 1px solid white;
-            border-radius: 3px 3px 0 0;
+            border-radius: 7px 7px 0 0;
         }
 
         .re-main .re-request-item .re-info-params .ui-tabs-nav.ui-widget-header li.ui-tab.ui-tabs-active a {
@@ -809,8 +818,12 @@
 
         .ui-tabs-panel.ui-widget-content {
             max-width: 100%;
-            height: 130px;
+            height: 220px;
             overflow: auto;
+            <!--border-left: 1px solid #323232;-->
+            <!--border-right: 1px solid #323232;-->
+            <!--border-bottom: 1px solid #323232;-->
+
         }
 
         .ui-tabs-panel.ui-widget-content#re-info-params-tab-2 {
@@ -936,7 +949,7 @@
                 <div class="re-info-params">
                     <div id="re-info-params-tabs">
                         <ul>
-                            <li>
+                            <li id="request-tab">
                                 <a href="#re-info-params-tab-1">Request</a>
                             </li>
                             <li id="bodyTab" class="rightAlignedTab">
