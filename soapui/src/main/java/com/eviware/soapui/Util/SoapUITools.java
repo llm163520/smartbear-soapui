@@ -29,6 +29,36 @@ import java.util.UUID;
 public class SoapUITools {
     private final static Logger log = LoggerFactory.getLogger(SoapUITools.class);
 
+    private static final boolean IS_WINDOWS = System.getProperty("os.name").contains("Windows");
+    private static final boolean IS_MAC = System.getProperty("os.name").contains("Mac");
+    private static final boolean IS_X86_PLATFORM = System.getProperty("sun.arch.data.model").equals("32");
+    private static final boolean IS_X64_PLATFORM = System.getProperty("sun.arch.data.model").equals("64");
+    private static final String OS_VERSION = System.getProperty("os.version");
+
+    public static boolean isWindows() {
+        return IS_WINDOWS;
+    }
+
+    public static boolean isMac() {
+        return IS_MAC;
+    }
+
+    public static boolean isLinux() {
+        return !IS_WINDOWS && !IS_MAC;
+    }
+
+    public static boolean isX86Platform() {
+        return IS_X86_PLATFORM;
+    }
+
+    public static boolean isX64Platform() {
+        return IS_X64_PLATFORM;
+    }
+
+    public static String getOSVersion() {
+        return OS_VERSION;
+    }
+
     public static File createTemporaryDirectory() throws IOException {
         String libDirectoryName = UUID.randomUUID().toString();
         final File libDirectory = new File(System.getProperty("java.io.tmpdir"), libDirectoryName);

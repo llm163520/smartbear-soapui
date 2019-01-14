@@ -84,6 +84,7 @@ import com.eviware.soapui.support.action.swing.ActionList;
 import com.eviware.soapui.support.action.swing.ActionListBuilder;
 import com.eviware.soapui.support.action.swing.ActionSupport;
 import com.eviware.soapui.support.action.swing.SwingActionDelegate;
+import com.eviware.soapui.support.components.BrowserUtils;
 import com.eviware.soapui.support.components.JComponentInspector;
 import com.eviware.soapui.support.components.JInspectorPanel;
 import com.eviware.soapui.support.components.JInspectorPanelFactory;
@@ -121,6 +122,7 @@ import com.google.common.base.Objects;
 import com.jgoodies.looks.HeaderStyle;
 import com.jgoodies.looks.Options;
 import com.smartbear.analytics.AnalyticsManager;
+import com.teamdev.jxbrowser.chromium.BrowserCore;
 import javafx.application.Platform;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -274,6 +276,13 @@ public class SoapUI {
     private static CmdLineRunner soapUIRunner;
 
     static {
+        if (BrowserUtils.canUseJxBrowser()) {
+            try {
+                BrowserCore.initialize();
+            } catch (Throwable e) {
+                log.warn("Cannot initialize JxBrowser, use JavaFx browser instead");
+            }
+        }
         try {
             Platform.setImplicitExit(false);
         } catch (NoClassDefFoundError e) {

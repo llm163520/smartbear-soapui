@@ -108,6 +108,9 @@
                                 <!-- http://mojo.codehaus.org/extra-enforcer-rules/enforceBytecodeVersion.html -->
                                 <enforceBytecodeVersion>
                                     <maxJdkVersion>1.8</maxJdkVersion>
+                                    <excludes>
+                                        <exclude>com.teamdev.jxbrowser</exclude>
+                                    </excludes>
                                 </enforceBytecodeVersion>
                             </rules>
                             <fail>true</fail>
@@ -125,7 +128,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>animal-sniffer-maven-plugin</artifactId>
-                <version>1.15</version>
+                <version>1.17</version>
                 <configuration>
                     <signature>
                         <groupId>org.codehaus.mojo.signature</groupId>

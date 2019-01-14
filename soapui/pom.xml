@@ -20,6 +20,10 @@
     <url>http://www.soapui.org</url>
     <packaging>jar</packaging>
 
+    <properties>
+        <jxbrowser.version>6.21</jxbrowser.version>
+    </properties>
+
     <build>
         <resources>
             <resource>
@@ -567,6 +571,33 @@
             <groupId>org.reflections</groupId>
             <artifactId>reflections</artifactId>
             <version>0.9.9-RC1</version>
+        </dependency>
+
+        <!-- JxBrowser dependencies-->
+        <dependency>
+            <groupId>com.teamdev.jxbrowser</groupId>
+            <artifactId>jxbrowser-win32</artifactId>
+            <version>${jxbrowser.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.teamdev.jxbrowser</groupId>
+            <artifactId>jxbrowser-win64</artifactId>
+            <version>${jxbrowser.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.teamdev.jxbrowser</groupId>
+            <artifactId>jxbrowser-mac</artifactId>
+            <version>${jxbrowser.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.teamdev.jxbrowser</groupId>
+            <artifactId>jxbrowser-linux64</artifactId>
+            <version>${jxbrowser.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.teamdev.jxbrowser</groupId>
+            <artifactId>jxbrowser</artifactId>
+            <version>${jxbrowser.version}</version>
         </dependency>
     </dependencies>
 

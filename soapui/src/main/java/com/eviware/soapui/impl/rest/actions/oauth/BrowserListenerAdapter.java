@@ -31,6 +31,11 @@ public class BrowserListenerAdapter implements BrowserListener {
     }
 
     @Override
+    public void titleChanged(String newTitle) {
+
+    }
+
+    @Override
     public void javaScriptExecuted(String script, String errorLocation, Exception error) {
 
     }

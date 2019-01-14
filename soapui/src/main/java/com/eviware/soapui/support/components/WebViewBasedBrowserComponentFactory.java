@@ -17,6 +17,7 @@
 package com.eviware.soapui.support.components;
 
 import com.eviware.soapui.SoapUI;
+import com.teamdev.jxbrowser.chromium.BrowserCore;
 
 /**
  * @author joel.jonsson
@@ -30,11 +31,29 @@ public class WebViewBasedBrowserComponentFactory {
         return createBrowserComponent(addNavigationBar, WebViewBasedBrowserComponent.PopupStrategy.INTERNAL_BROWSER_NEW_WINDOW);
     }
 
-    public static WebViewBasedBrowserComponent createBrowserComponent(boolean addNavigationBar, WebViewBasedBrowserComponent.PopupStrategy popupStrategy) {
+    public static WebViewBasedBrowserComponent createBrowserComponent(boolean addNavigationBar,
+                                                                      WebViewBasedBrowserComponent.PopupStrategy popupStrategy) {
+        return createBrowserComponent(false, addNavigationBar, popupStrategy);
+    }
+
+    public static WebViewBasedBrowserComponent createBrowserComponent(boolean useJxBrowser,
+                                                                      boolean addNavigationBar,
+                                                                      WebViewBasedBrowserComponent.PopupStrategy popupStrategy) {
+        return createBrowserComponent(useJxBrowser, addNavigationBar, false, popupStrategy);
+    }
+
+    public static WebViewBasedBrowserComponent createBrowserComponent(boolean useJxBrowser,
+                                                                      boolean addNavigationBar,
+                                                                      boolean withContextMenu,
+                                                                      WebViewBasedBrowserComponent.PopupStrategy popupStrategy) {
         if (SoapUI.isBrowserDisabled()) {
             return new DisabledWebViewBasedBrowserComponent();
+        }
+
+        if (useJxBrowser && BrowserUtils.canUseJxBrowser() && BrowserCore.isInitialized()) {
+            return new JxBrowserComponent(addNavigationBar, withContextMenu, popupStrategy);
         } else {
-            return new EnabledWebViewBasedBrowserComponent(addNavigationBar, popupStrategy);
+            return new EnabledWebViewBasedBrowserComponent(addNavigationBar, withContextMenu, popupStrategy);
         }
     }
 }

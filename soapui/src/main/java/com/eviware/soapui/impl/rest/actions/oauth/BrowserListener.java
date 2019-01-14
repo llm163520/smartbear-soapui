@@ -24,6 +24,8 @@ public interface BrowserListener {
 
     void contentChanged(String newContent);
 
+    void titleChanged(String newTitle);
+
     void javaScriptExecuted(String script, String location, Exception error);
 
     void browserClosed();
