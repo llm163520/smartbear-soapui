@@ -40,7 +40,7 @@ public class EndpointExplorerAction extends AbstractAction {
         f.setResizable(false);
         f.setVisible(true);
 
-        browser.navigate("file://" + "C:\\Users\\Christina.Zelenko\\Desktop\\soapOS\\soapui\\soapui\\src\\main\\java\\com\\eviware\\soapui\\impl\\actions\\explorer\\html\\soapui-pro-api-endpoint-explorer-starter-page.html");
+        browser.navigate("file://" + "C:\\Users\\Christina.Zelenko\\Desktop\\soapOS\\soapui\\soapui\\src\\main\\resources\\com\\eviware\\soapui\\explorer\\soapui-pro-api-endpoint-explorer-starter-page.html");
         //browser.navigate("file://" + System.getProperty("soapui.home", ".")
         //            + "/starter-page.html");
 
