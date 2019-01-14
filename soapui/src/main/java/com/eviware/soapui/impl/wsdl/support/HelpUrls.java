@@ -221,4 +221,6 @@ public interface HelpUrls {
 
     public static final String REST_DISCOVERY_WITH_INTERNAL_BROWSER = "/REST-Discovery/api-with-internal-browser.html";
     public static final String STARTER_PAGE_URL = "http://soapui.org/Appindex/soapui-starterpage.html?version=" + urlEncodeWithUtf8(SoapUI.SOAPUI_VERSION);
+
+    public static final String ENDPOINT_EXPLORER_URL = "/com/eviware/soapui/impl/actions/explorer/html/soapui-pro-api-endpoint-explorer-starter-page.html";
 }

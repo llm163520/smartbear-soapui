@@ -34,6 +34,7 @@ import com.eviware.soapui.impl.actions.ImportWsdlProjectAction;
 import com.eviware.soapui.impl.actions.NewEmptyProjectAction;
 import com.eviware.soapui.impl.actions.NewRestProjectAction;
 import com.eviware.soapui.impl.actions.NewWsdlProjectAction;
+import com.eviware.soapui.impl.actions.explorer.EndpointExplorerAction;
 import com.eviware.soapui.impl.rest.actions.project.NewRestServiceAction;
 import com.eviware.soapui.impl.support.actions.ShowOnlineHelpAction;
 import com.eviware.soapui.impl.wsdl.WsdlProject;
@@ -378,6 +379,7 @@ public class SoapUI {
         mainToolbar.add(new PreferencesActionDelegate());
         applyProxyButton = (JToggleButton) mainToolbar.add(new JToggleButton(new ApplyProxyButtonAction()));
         updateProxyButtonAndTooltip();
+        mainToolbar.add(new EndpointExplorerAction());
 
         mainToolbar.addGlue();
         searchField = new JTextField(20) {
