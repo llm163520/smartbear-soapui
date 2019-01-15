@@ -206,10 +206,7 @@
             form.data.save = $("#{0}".format(form.formSave));
             form.data.formContainer = form.data.save.closest('.re-request-item');
             form.data.save.button();
-            form.data.save.click(function (event)) {
-                event.preventDefault();
 
-            }
 
             form.data.send = $("#{0}".format(form.formAction));
             form.data.formContainer = form.data.send.closest('.re-request-item');
@@ -433,10 +430,7 @@
             width: calc(100% / 2 - 10px);
             margin-top: 20px;
             height: 240px;
-            <!--border-left: 1px solid #323232;-->
-            <!--border-bottom: 1px solid #323232;-->
-            <!--border-right: 1px solid #323232;-->
-            <!--border: 1px solid #323232;-->
+            border-bottom: 1px solid #323232;
             background-color: white;
             font-size: 12px;
         }
@@ -551,13 +545,7 @@
 
         .re-main .re-request-item .re-info-params .ui-tabs-nav.ui-widget-header li.ui-state-disabled {
             margin-right: 5px;
-            padding-left: 10px;
-            padding-right: 10px;
-            border-right: 1px solid #323232;
-            border-left: 1px solid #323232;
-            border-top: 1px solid #323232;
-            border-bottom: 1px solid white;
-            border-top-left-radius: 10px;
+            padding-left: 0px;
         }
 
         .re-main .re-request-item .re-info-params .ui-tabs-nav.ui-widget-header li.ui-tab.ui-tabs-active {
@@ -565,7 +553,7 @@
             border-left: 1px solid #323232;
             border-right: 1px solid #323232;
             border-bottom: 1px solid white;
-            border-radius: 7px 7px 0 0;
+            border-radius: 3px 3px 0 0;
         }
 
         .re-main .re-request-item .re-info-params .ui-tabs-nav.ui-widget-header li.ui-tab.ui-tabs-active a {
@@ -820,9 +808,6 @@
             max-width: 100%;
             height: 220px;
             overflow: auto;
-            <!--border-left: 1px solid #323232;-->
-            <!--border-right: 1px solid #323232;-->
-            <!--border-bottom: 1px solid #323232;-->
 
         }
 
