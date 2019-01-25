@@ -107,7 +107,9 @@ public class WsdlTestSuiteRunner extends AbstractTestRunner<WsdlTestSuite, WsdlT
         if (testSuite.getRunType() == TestSuiteRunType.SEQUENTIAL) {
             runSequential(testSuite, runContext);
         } else if (testSuite.getRunType() == TestSuiteRunType.PARALLEL) {
+            long t0 = System.currentTimeMillis();
             runParallel(testSuite, runContext);
+            SoapUI.getErrorLog().error(System.currentTimeMillis() - t0);
         }
     }
 
